@@ -37,6 +37,16 @@ int Span::shortestSpan()
 {
     if (_data.size() < 2)
         throw std::runtime_error("Not enough numbers");
+    std::vector<int> sorted = _data;
+    std::sort(sorted.begin(), sorted.end());
+    int minSpan = INT_MAX;
+    for (size_t i = 1; i < sorted.size(); i++)
+    {
+        int diff = sorted[i] - sorted[i - 1];
+        if (diff < minSpan)
+            minSpan = diff;
+    }
+    return (minSpan);
 }   
 
 int Span::longestSpan()

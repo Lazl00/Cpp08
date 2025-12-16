@@ -16,11 +16,13 @@
 # include <vector>
 # include <algorithm>
 # include <climits>
+# include <stdexcept>
 
-class Span{
+class Span
+{
     private:
-        unsigned int _N;
-        std::vector<int> _data;
+        unsigned int        _N;
+        std::vector<int>    _data;
 
     public:
         Span(unsigned int N);
@@ -29,6 +31,19 @@ class Span{
         ~Span();
 
         void addNumber(int n);
+
+        template <typename It>
+        void addNumbers(It begin, It end)
+        {
+            size_t currentSize = _data.size();
+            size_t rangeSize = std::distance(begin, end);
+
+            if (currentSize + rangeSize > _N)
+                throw std::runtime_error("Cannot add other numbers, Span is full.");
+
+            _data.insert(_data.end(), begin, end);
+        }
+
         int shortestSpan();
         int longestSpan();
-}
+};
