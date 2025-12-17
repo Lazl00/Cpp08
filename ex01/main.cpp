@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
 int main()
 {
     try
@@ -41,6 +42,17 @@ int main()
 
         std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
         std::cout << "Longest span : " << sp2.longestSpan() << std::endl;
+
+        std::cout << "\nTEST RANDOM MASSIF (10 000 nombres)" << std::endl;
+
+        srand(time(NULL));
+
+        Span big(10000);
+        for (int i = 0; i < 10000; i++)
+            big.addNumber(rand());
+
+        std::cout << "Big Span Shortest span: " << big.shortestSpan() << std::endl;
+        std::cout << "Big Span Longest span : " << big.longestSpan() << std::endl;
 
         std::cout << "\nTESTS D'EXCEPTIONS" << std::endl;
 

@@ -12,8 +12,10 @@
 
 #include "MutantStack.hpp"
 
-int main()
+void testMutantStack()
 {
+    std::cout << "=== MutantStack ===" << std::endl;
+
     MutantStack<int> mstack;
     mstack.push(5);
     mstack.push(17);
@@ -39,29 +41,28 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
-
-    std::stack<int> s(mstack);
-    return 0;
 }
 
-int main()
+void testList()
 {
-    std::list<int> mstack;
-    mstack.push_back(5);
-    mstack.push_back(17);
+    std::cout << "\n=== std::list ===" << std::endl;
 
-    std::cout << mstack.front() << std::endl;
+    std::list<int> lst;
+    lst.push_back(5);
+    lst.push_back(17);
 
-    mstack.pop_front();
-    std::cout << mstack.size() << std::endl;
+    std::cout << lst.back() << std::endl;
 
-    mstack.push_back(3);
-    mstack.push_back(5);
-    mstack.push_back(737);
-    mstack.push_back(0);
+    lst.pop_back();
+    std::cout << lst.size() << std::endl;
 
-    std::list<int>::iterator it = mstack.back();
-    std::list<int>::iterator ite = mstack.back();
+    lst.push_back(3);
+    lst.push_back(5);
+    lst.push_back(737);
+    lst.push_back(0);
+
+    std::list<int>::iterator it = lst.begin();
+    std::list<int>::iterator ite = lst.end();
 
     ++it;
     --it;
@@ -71,7 +72,11 @@ int main()
         std::cout << *it << std::endl;
         ++it;
     }
+}
 
-    std::stack<int> s(mstack);
+int main()
+{
+    testMutantStack();
+    testList();
     return 0;
 }
